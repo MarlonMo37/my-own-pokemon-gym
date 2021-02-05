@@ -6,6 +6,7 @@ require 'sinatra/activerecord/rake'
 def reload
     load_all 'app'
 end
+
 # desc: "Rake console"
 task :console do
     reload
