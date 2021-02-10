@@ -10,6 +10,7 @@ gem 'shotgun'
 gem 'bcrypt'
 gem 'dotenv'
 gem 'sinatra-flash'
+gem 'email_validator'
 
 group :development do
     gem 'pry'
