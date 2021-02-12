@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    has_many :teams
+    has_many :teams, class_name: "Team", foreign_key: "trainer_id"
     has_many :pokemon, through: :teams
     has_secure_password
     validates :password, length: {in: 10..100}, confirmation: true
