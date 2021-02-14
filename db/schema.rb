@@ -34,10 +34,8 @@ ActiveRecord::Schema.define(version: 2021_02_05_191045) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "type"
     t.string "name"
     t.integer "trainer_id"
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trainer_id"], name: "index_teams_on_trainer_id"

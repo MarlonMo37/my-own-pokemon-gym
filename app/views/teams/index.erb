@@ -1,0 +1,13 @@
+<h1>Teams</h1>
+<div>
+<% if @teams != nil %>
+<% @teams.each do |t| %>
+    <div>
+    <a href="/teams/#{t.id}"><%= t.name %></a>
+    </div>
+<% end %>
+<% end %>
+</div>
+
+
+<a class="button" href="/teams/new">Create New Team</a>

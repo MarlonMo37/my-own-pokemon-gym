@@ -1,5 +1,8 @@
 class Pokemon < ActiveRecord::Base
-    include API
+
+
+    # include API
+    # @@all = []
     has_many :pokemonteams
     has_many :teams, through: :pokemonteams
     validates :name, presence: true
@@ -7,8 +10,8 @@ class Pokemon < ActiveRecord::Base
     validates :nature, presence: true
     validates :ability, presence: true
 
-    def self.catch_pokemon
-
-    end
+    # def self.catch_pokemon
+    #     Pokemon.new
+    # end
 
 end
