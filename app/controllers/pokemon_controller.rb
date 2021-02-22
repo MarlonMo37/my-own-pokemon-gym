@@ -6,7 +6,9 @@ class PokemonController < ApplicationController
             poke = Pokemon.get_poke_info(url)
             @team = Team.find(params[:team_id])
             @team.pokemon << poke
+            flash[:success] = "You caught a #{poke.name.capitalize}!!"
             redirect "/teams/#{@team.id}/edit"
+            
         else
             redirect "/login"
         end
@@ -17,6 +19,7 @@ class PokemonController < ApplicationController
             poke = current_user.pokemon.find_by(id: params[:id])
             @team = poke.teams.first
             poke.delete
+            flash[:success] = "Pokemon succesfully released"
             redirect "/teams/#{@team.id}/edit"
         else 
             redirect "/login"
