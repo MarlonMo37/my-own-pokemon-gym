@@ -8,6 +8,7 @@ class CreatePokemons < ActiveRecord::Migration[5.2]
       t.string :nature
       t.string :ability 
       t.string :avatar
+      t.string :sprite
 
       t.timestamps null: false
     end

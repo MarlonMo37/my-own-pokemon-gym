@@ -1,10 +1,16 @@
 <h1>Teams</h1>
+<h2>Click on a team name to see more details</h2>
 <div>
 <% if @teams != nil %>
-<% @teams.each do |t| %>
+<% @teams.each do |t| %> 
+    <a href="/teams/<%= t.id %>"><%= t.name %></a>
     <div>
-    <a href="/teams/#{t.id}"><%= t.name %></a>
+    <% poke = t.pokemon %>
+    <% poke.each do |p| %>
+        <img src="<%= p.sprite %>" alt="<%= p.name %>">
+    <% end %>
     </div>
+
 <% end %>
 <% end %>
 </div>

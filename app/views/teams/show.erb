@@ -1,1 +1,17 @@
-Show Me The Money
+<h1><%= @team.name %></h1>
+
+<% @team.pokemon.each do |pok| %>
+    <h1>Name: <%= pok.name.capitalize %></h1>
+    <% if pok.secondary_type %>
+        <h2>Type: <%= pok.primary_type.capitalize %> <%= pok.secondary_type.capitalize %></h2>
+    <% else %>
+        <h2>Type: <%= pok.primary_type.capitalize %><h2>
+    <% end %>
+    <h2>Nature: <%= pok.nature %></h2>
+    <h2>Ability: <%= pok.ability.capitalize %></h2>
+    <img src="<%= pok.avatar %>" alt="pokemon">
+<% end %>
+
+<a class="button" href="/teams/<%= @team.id %>/edit">Edit Team</a>
+<br></br>
+<a class="button" href="/teams">Return To Teams</a>

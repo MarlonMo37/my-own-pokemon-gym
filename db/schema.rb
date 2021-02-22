@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_191045) do
     t.string "nature"
     t.string "ability"
     t.string "avatar"
+    t.string "sprite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

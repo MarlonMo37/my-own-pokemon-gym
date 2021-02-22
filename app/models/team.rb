@@ -3,5 +3,6 @@ class Team < ActiveRecord::Base
     has_many :pokemonteams
     has_many :pokemon, through: :pokemonteams
     validates :trainer, presence: true
+    validates :name, presence: true
 
 end
