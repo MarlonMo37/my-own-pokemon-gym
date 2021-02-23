@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
     end
 
     post "/login" do
-        user = User.find_by_email(params["user"]["email"])
-        if user && user.authenticate(params["user"]["password"])
+        @user = User.find_by_email(params["user"]["email"])
+        if @user && user.authenticate(params["user"]["password"])
             flash[:success] = "Logged in successfully"
             redirect "/teams"
         else

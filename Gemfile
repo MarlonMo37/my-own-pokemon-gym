@@ -11,6 +11,7 @@ gem 'bcrypt'
 gem 'dotenv'
 gem 'sinatra-flash'
 gem 'email_validator'
+gem 'bootstrap', '~> 5.0.0.beta1'
 
 group :development do
     gem 'pry'

@@ -1,19 +1,23 @@
 <h1>Teams</h1>
-<h2>Click on a team name to see more details</h2>
-<div>
-<% if @teams != nil %>
-<% @teams.each do |t| %> 
-    <a href="/teams/<%= t.id %>"><%= t.name %></a>
-    <div>
-    <% poke = t.pokemon %>
-    <% poke.each do |p| %>
-        <img src="<%= p.sprite %>" alt="<%= p.name %>">
-    <% end %>
-    </div>
 
-<% end %>
-<% end %>
+<center>
+    <h2>Click on a team name to see more details</h2>
+</center>
+<br></br>
+<div class="container">
+    <% if @teams != nil %>
+        <% @teams.each do |t| %> 
+            <a type="button" class="btn btn-outline-danger" href="/teams/<%= t.id %>"><%= t.name %></a>
+            <div>
+             <% poke = t.pokemon %>
+                <% poke.each do |p| %>
+                    <img src="<%= p.sprite %>" class="img-thumbnail" alt="<%= p.name %>">
+                 <% end %>
+            </div>
+            <br></br>
+        <% end %>
+    <% end %>
+    <br></br>
+    <a type="button" class="btn btn-primary" href="/teams/new">Create New Team</a>
 </div>
 
-
-<a class="button" href="/teams/new">Create New Team</a>
