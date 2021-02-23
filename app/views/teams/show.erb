@@ -4,20 +4,31 @@
     <center>
         <h1><%= @team.name %></h1>
         </center>
-    <% @team.pokemon.each do |pok| %>
-        <img src="<%= pok.avatar %>" class="pull-left" alt="pokemon">
-        <h2>Name: <%= pok.name.capitalize %></h1>
-        <% if pok.secondary_type %>
-            <h2>Type: <%= pok.primary_type.capitalize %> <%= pok.secondary_type.capitalize %></h2>
-        <% else %>
-            <h2>Type: <%= pok.primary_type.capitalize %><h2>
+    <div class="container">
+        <% @team.pokemon.each do |pok| %>
+            <table class="table">
+                <tbody>
+                    <tr style="color:white">
+                        <th scope="row"><img src="<%= pok.avatar %>" class="pull-left" alt="pokemon"></th>
+                        <td>
+                            <br></br>
+                            <br></br>
+                            <h2>Name: <%= pok.name.capitalize %></h1>
+                            <% if pok.secondary_type %>
+                                <h2>Type: <%= pok.primary_type.capitalize %> <%= pok.secondary_type.capitalize %></h2>
+                            <% else %>
+                                <h2>Type: <%= pok.primary_type.capitalize %><h2>
+                            <% end %>
+                            <h2>Nature: <%= pok.nature %></h2>
+                            <h2>Ability: <%= pok.ability.capitalize %></h2>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>        
         <% end %>
-        <h2>Nature: <%= pok.nature %></h2>
-        <h2>Ability: <%= pok.ability.capitalize %></h2>
-        
-    <% end %>
+        <a type="button" class="btn btn-danger" href="/teams/<%= @team.id %>/edit">Edit Team</a>
+        <br></br>
+        <a type="button" class="btn btn-primary" href="/teams">Return To Teams</a>
+    </div>
 </div>
 
-<a class="button" href="/teams/<%= @team.id %>/edit">Edit Team</a>
-<br></br>
-<a class="button" href="/teams">Return To Teams</a>

@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
             @teams = current_user.teams
             erb :'/teams/index'
         else
+            binding.pry
             redirect "/login"
         end
     end

@@ -1,33 +1,57 @@
-<h1>Edit Team</h1>
-<form method="post" action="/teams/<%= @team.id %>">
-    <input type="hidden" name="_method" value="PATCH">
-    <label for="name">Team Name</label>
-    <input type="text" name="name" id="name" class="form-control">
-    <input type="submit" value="Finish">
-</form>
 
-<% @team.pokemon.each do |pok| %>
-    <form method="post" action="/pokemon/<%= pok.id %>">
-        <input type="hidden" name="_method" value="delete">
-        <h1>Name: <%= pok.name.capitalize %></h1>
-        <% if pok.secondary_type %>
-            <h2>Type: <%= pok.primary_type.capitalize %> <%= pok.secondary_type.capitalize %></h2>
-        <% else %>
-            <h2>Type: <%= pok.primary_type.capitalize %><h2>
+
+
+
+<div class="p-3 mb-2 bg-dark text-white">
+    <div class="container">
+        <center
+            <h1>Edit Team</h1>
+        </center>
+        <form method="post" action="/teams/<%= @team.id %>">
+            <input type="hidden" name="_method" value="PATCH">
+            <label for="name">Team Name</label>
+            <input type="text" name="name" id="name" value="<%= @team.name %>" class="form-control">
+            <input type="submit" class="btn btn-primary" value="Finish">
+        </form>
+        <br></br>
+        <% if @team.pokemon.length < 6 %>
+            <form method="post" action="/teams/<%= @team.id %>/pokemon">
+                <input type="hidden" name="team_id" value ="<%= @team.id %>">
+                <center>
+                    <input type="submit" class="btn btn-outline-light" value="Catch Pokemon">
+                </center>
+            </form>
         <% end %>
-        <h2>Nature: <%= pok.nature %></h2>
-        <h2>Ability: <%= pok.ability.capitalize %></h2>
-        <img src="<%= pok.avatar %>" alt="<%= pok.name %>">
-        <input type="submit" value="Release Pokemon" >
-    </form>
-<% end %>
+        <% @team.pokemon.each do |pok| %>
+            <table class="table">
+                <tbody>
+                    <tr style="color:white">
+                        <th scope="row"><img src="<%= pok.avatar %>" class="pull-left" alt="pokemon"></th>
+                        <td>
+                            <br></br>
+                            <br></br>
+                            <h2>Name: <%= pok.name.capitalize %></h1>
+                            <% if pok.secondary_type %>
+                                <h2>Type: <%= pok.primary_type.capitalize %> <%= pok.secondary_type.capitalize %></h2>
+                            <% else %>
+                                <h2>Type: <%= pok.primary_type.capitalize %><h2>
+                            <% end %>
+                            <h2>Nature: <%= pok.nature %></h2>
+                            <h2>Ability: <%= pok.ability.capitalize %></h2>
+                            <form method="post" action="/pokemon/<%= pok.id%>">
+                                <input type="hidden" name="_method" value="delete">
+                                <input type="submit" class="btn btn-outline-danger" value="Release Pokemon" >
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>        
+        <% end %>
+    </div>
+</div>
 
-<% if @team.pokemon.length < 6 %>
-    <form method="post" action="/teams/<%= @team.id %>/pokemon">
-        <input type="hidden" name="team_id" value ="<%= @team.id %>">
-        <input type="submit" value="Catch Pokemon">
-    </form>
-<% end %>
+
+
 
 
 

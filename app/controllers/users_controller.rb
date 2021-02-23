@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
     
     get '/signup' do
-        erb :"/users/signup"
+        if logged_in?
+            redirect "/teams"
+        else
+            erb :"/users/signup"
+        end
     end
 
     post '/signup' do
         @user = User.create(params["user"])
         if @user.valid?
-            flash[:success] = "Information succesfully submited"
+            flash[:success] = "Information succesfully submmited"
             session[:user_id] = @user.id
             redirect '/teams'
         else
@@ -15,5 +19,4 @@ class UsersController < ApplicationController
             redirect '/signup'
         end
     end
-
 end
