@@ -8,7 +8,7 @@ class Pokemon < ActiveRecord::Base
         "Calm", "Gentle", "Sassy", "Careful", "Quirky"
     ]
 
-    include API
+    
     has_many :pokemonteams
     has_many :teams, through: :pokemonteams
     validates :name, presence: true
