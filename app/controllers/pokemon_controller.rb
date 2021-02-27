@@ -4,10 +4,10 @@ class PokemonController < ApplicationController
         if logged_in?
             url = Pokemon.get_pokemon
             poke = Pokemon.get_poke_info(url)
-            @team = Team.find(params[:team_id])
-            @team.pokemon << poke
+            team = Team.find(params[:team_id])
+            team.pokemon << poke
             flash[:success] = "You caught a #{poke.name.capitalize}!!"
-            redirect "/teams/#{@team.id}/edit"
+            redirect "/teams/#{team.id}/edit"
             
         else
             redirect "/login"
@@ -17,10 +17,10 @@ class PokemonController < ApplicationController
     delete "/pokemon/:id" do
         if logged_in?
             poke = current_user.pokemon.find_by(id: params[:id])
-            @team = poke.teams.first
+            team = poke.teams.first
             poke.delete
             flash[:success] = "Pokemon succesfully released"
-            redirect "/teams/#{@team.id}/edit"
+            redirect "/teams/#{team.id}/edit"
         else 
             redirect "/login"
         end

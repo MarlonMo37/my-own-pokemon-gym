@@ -9,13 +9,13 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        @user = User.create(params["user"])
-        if @user.valid?
+        user = User.create(params["user"])
+        if user.valid?
             flash[:success] = "Information succesfully submmited"
-            session[:user_id] = @user.id
+            session[:user_id] = user.id
             redirect '/teams'
         else
-            flash[:error] = @user.errors.full_messages.first
+            flash[:error] = user.errors.full_messages.first
             redirect '/signup'
         end
     end

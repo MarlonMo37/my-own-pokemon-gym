@@ -1,4 +1,11 @@
 class Pokemon < ActiveRecord::Base
+    has_many :pokemonteams
+    has_many :teams, through: :pokemonteams
+    validates :name, presence: true
+    validates :primary_type, presence: true
+    validates :nature, presence: true
+    validates :ability, presence: true
+    validates :avatar, presence: true
 
     NATURES = [
         "Hardy", "Lonely", "Brave", "Adamant", "Naughty", 
@@ -7,15 +14,6 @@ class Pokemon < ActiveRecord::Base
         "Modest", "Mild", "Quiet", "Bashful", "Rash",
         "Calm", "Gentle", "Sassy", "Careful", "Quirky"
     ]
-
-    
-    has_many :pokemonteams
-    has_many :teams, through: :pokemonteams
-    validates :name, presence: true
-    validates :primary_type, presence: true
-    validates :nature, presence: true
-    validates :ability, presence: true
-    validates :avatar, presence: true
 
     def self.get_pokemon
         url = "https://pokeapi.co/api/v2/pokemon/#{rand(1..251)}"
